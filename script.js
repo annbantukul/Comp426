@@ -1,5 +1,5 @@
 $(function(){
-    var APIKEY = "a974be00eb79053c00d4b6b6372ab763a0da9c17b1c75387cc19bc5d642b268d";
+    var APIKEY = "";
     testTrending(APIKEY);
 });
 
