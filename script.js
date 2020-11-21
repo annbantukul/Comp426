@@ -1,6 +1,6 @@
 $(function(){
     var APIKEY = "";
-    testTrending(APIKEY);
+    trendingMovies(APIKEY);
 });
 
 /**
@@ -14,14 +14,9 @@ $(function(){
 async function trendingMovies(APIKEY){
     const result = await axios({
         method: 'GET',
-        //url: 'https://private-anon-08f2abf737-trakt.apiary-mock.com/movies/trending',
-        url: "https://api.trakt.tv/movies/trending",
-        headers: {
-            "Content-type": "application/json",
-            "trakt-api-version": "2",
-            "trakt-api-key": APIKEY,
-        },
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita',
     });
+    console.log(result);
     return result.data;
 }
 
