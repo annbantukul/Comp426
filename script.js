@@ -187,6 +187,8 @@ export async function addDrinkCard(drink){
         $('#ingList').append(`<li>${ingredients[j+i]}  ${ingredients[i]}</li>`)
     }
 
+    $('#ingList').append(`<br><button type = "button" id = "favButton" class = "button is-rounded is-small">Add to Favorites</button>`)
+
 }
 
 export async function postIngredients(){
@@ -347,7 +349,6 @@ export async function postAll(){
         method: 'Get',
         url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail',
     })
-    console.log(res.data)
 
     for(let i of res.data.drinks){
         $('#drinkList').append(`<option value = "${i.strDrink}">`)
