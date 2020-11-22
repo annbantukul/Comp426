@@ -137,7 +137,6 @@ export async function addDrinkCard(drink){
     let vol = 0;
 
 
-
     let res = await axios({
         method: 'GET',
         url: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='+drink,
