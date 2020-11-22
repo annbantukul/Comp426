@@ -14,7 +14,6 @@ $(document).on("click", "#whiskyButton", handleWhisky)
  postWhisky()
 })
 
-
 export async function postPopular(){
     let res = await axios({
         method: 'GET',
