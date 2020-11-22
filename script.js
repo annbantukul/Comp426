@@ -173,3 +173,5 @@ export async function addDrinkCard(drink){
     }
 
 }
+
+//add search by ingredients
