@@ -69,30 +69,30 @@
                                     <div class = "container">
                                         <div class="columns">
                                             <div class="column">
-                                                <button type = "button" class = "button is-success is-light is-fullwidth">Vodka</button>
+                                                <button type = "button" class = "button is-success is-light is-fullwidth" id = "vod">Vodka</button>
                                             </div>
                                             <div class="column">
-                                                <button type = "button" class = "button is-success is-light is-fullwidth">Gin</button>
+                                                <button type = "button" class = "button is-success is-light is-fullwidth" id = "gin">Gin</button>
                                             </div>
                                             <div class="column">
-                                                <button type = "button" class = "button is-success is-light is-fullwidth">Tequila</button>
+                                                <button type = "button" class = "button is-success is-light is-fullwidth" id = "teq">Tequila</button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class = "container">
                                         <div class="columns">
                                             <div class="column">
-                                                <button type = "button" class = "button is-success is-light is-fullwidth">Rum</button>
+                                                <button type = "button" class = "button is-success is-light is-fullwidth" id = "rum">Rum</button>
                                             </div>
                                             <div class="column">
-                                                <button type = "button" class = "button is-success is-light is-fullwidth">Brandy</button>
+                                                <button type = "button" class = "button is-success is-light is-fullwidth" id = "bran">Brandy</button>
                                             </div>
                                             <div class="column">
-                                                <button type = "button" class = "button is-success is-light is-fullwidth">Whisky</button>
+                                                <button type = "button" class = "button is-success is-light is-fullwidth" id = "whis">Whisky</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="content">
+                                    <!-- <div class="content">
                                         <div class=columns>
                                             <div class="column is-one-third">
                                                 <h2 class="title has-text-white">Vodka Drinks</h2>
@@ -102,9 +102,7 @@
                                                     </datalist>
                                                     <button type = "button" id = "vodkaButton" class = "button is-rounded is-small">clink!</button>
                                                 </div>
-                                                <!-- <div class="box">
-                                                    <p>My drink 2</p>
-                                                </div> -->
+
                                             </div>
                                             <div class="column is-one-third">
                                                 <h2 class="title has-text-white">Gin Drinks</h2>
@@ -113,7 +111,7 @@
                                                     <datalist id = "ginList">                
                                                     </datalist>
                                                     <button type = "button" id = "ginButton" class = "button is-rounded is-small">clink!</button>                
-                                                    <!-- <p>My drink 1</p> -->
+
                                                 </div>
                                             </div>
                                             <div class="column is-one-third">
@@ -123,13 +121,33 @@
                                                     <datalist id = "tequilaList">                
                                                     </datalist>
                                                     <button type = "button" id = "tequilaButton" class = "button is-rounded is-small">clink!</button>
-                                                    <!-- <p>My drink 3</p> -->
+                    
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
+
+                                    <section class="section">
+                                        <div class = "content" id = "drinkCard" >
+                                            <div class = "columns">
+                                                <div id = "drinkCardName" class = "column is-one-third"></div>
+                                                <ul id = "ingList" class = "column is-one-third"></ul>
+                                                <div id = "drinkDirections" class = "column is-one-third"></div>
+                                            </div>
+                                        </div>
+                                    </section>
                         </section>
-                        <section class="section has-background-dark">
+                        <!-- <section>
+                            <div class = "column is-one-third">
+                                <table id = "drinkTable">
+                                </table>
+                            </div>
+                        </section> -->
+
+
+
+
+                        <!-- <section class="section has-background-dark">
                             <div class="container">
                                 <div class="content">
                                     <div class=columns>
@@ -141,9 +159,7 @@
                                                 </datalist>
                                                 <button type = "button" id = "rumButton" class = "button is-rounded is-small">clink!</button>
                                             </div>
-                                            <!-- <div class="box">
-                                                <p>My drink 2</p>
-                                            </div> -->
+
                                         </div>
                                         <div class="column is-one-third">
                                             <h2 class="title has-text-white">Brandy Drinks</h2>
@@ -152,7 +168,7 @@
                                                 <datalist id = "brandyList">                
                                                 </datalist>
                                                 <button type = "button" id = "brandyButton" class = "button is-rounded is-small">clink!</button>                
-                                                <!-- <p>My drink 1</p> -->
+
                                             </div>
                                         </div>
                                         <div class="column is-one-third">
@@ -162,25 +178,18 @@
                                                 <datalist id = "whiskyList">                                                    
                                                 </datalist>
                                                 <button type = "button" id = "whiskyButton" class = "button is-rounded is-small">clink!</button>
-                                                <!-- <p>My drink 3</p> -->
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </section> -->
 
                             </div>
                             <div class = "column is-half">
-                                <section class="section">
-                                    <div class = "content" id = "drinkCard" >
-                                        <div class = "columns">
-                                            <div id = "drinkCardName" class = "column is-one-third"></div>
-                                            <ul id = "ingList" class = "column is-one-third"></ul>
-                                            <div id = "drinkDirections" class = "column is-one-third"></div>
-                                        </div>
-                                    </div>
-                                </section>
+                                    <table id = "drinkTable">
+                                    </table>
                             </div>
                         </div>
                     </div>
@@ -201,16 +210,16 @@
 
         <section class = "section has-background-light">
             <div class = "container">
-                <div class = "content">
-                    <div id = "allIngredients">
-                        <input list = "ingredientList" id = "ingInput" class = "box" value = "">
-                        <input list = "ingredientList" id = "ingInput2" class = "box" value = "">
-                        <input list = "ingredientList" id = "ingInput3" class = "box" value = "">
-                        <input list = "ingredientList" id = "ingInput4" class = "box" value = "">
+                <div class = "content level" >
+                    <div id = "allIngredients" class = "level-left">
+                        <input list = "ingredientList" id = "ingInput" class = "box"  value = "">
+                        <input list = "ingredientList" id = "ingInput2" class = "box " value = "">
+                        <input list = "ingredientList" id = "ingInput3" class = "box " value = "">
+                        <input list = "ingredientList" id = "ingInput4" class = "box " value = "">
                         <datalist id = "ingredientList">                                                    
                         </datalist>
                         <button type = "button" id = "ingButton" class = "button is-rounded is-small">Find me a drink!</button>
-                        <table id = "ingredientTable"></table>
+                        <table id = "ingredientTable" class = "level-right column is-half"></table>  
                     </div>
                 </div>
             </container>
@@ -228,7 +237,7 @@
 
         <section class="section has-background-dark">
             <div class = "container">
-            <h2 class="title has-text-white">Popular</h2>
+            <h2 class="title has-text-white">Popular Drinks</h2>
             <table class="box" id = "popular">
             </table>
         </section>

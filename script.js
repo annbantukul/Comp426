@@ -9,6 +9,12 @@ $(document).on("click", "#ingButton", handleIngredients)
 $(document).on("click",".link", drinkClick)
 $(document).on("click", ".pop", drinkClick)
 $(document).on("click", "#searchButton", searchName)
+$(document).on("click", "#vod", handleVod)
+$(document).on("click", "#gin", handleGin2)
+$(document).on("click", "#teq", handleTeq)
+$(document).on("click", "#rum", handleRum1)
+$(document).on("click", "#bran", handleBran)
+$(document).on("click", "#whis", handleWhis)
  postPopular()
  postVodka()
  postGin()
@@ -19,6 +25,112 @@ $(document).on("click", "#searchButton", searchName)
  postIngredients()
  postAll()
 })
+
+export async function handleVod(){
+    $('#ingredientTable').empty()
+    let res = await axios({
+        method: 'Get',
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Brandy',
+    })
+
+    for(let i =0; i < res.data.drinks.length; i++){
+        console.log(res.data.drinks[i].strDrink)
+        let j = Math.floor(i/5)
+        if( i % 5 == 0){
+            $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
+        }
+         $('#table'+j).append(`<td id = "${res.data.drinks[i].strDrink}"><button class = "pop">${res.data.drinks[i].strDrink}</button></td>`)
+    }
+}
+
+export async function handleGin2(){
+    $('#ingredientTable').empty()
+    let res = await axios({
+        method: 'Get',
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin',
+    })
+
+    for(let i =0; i < res.data.drinks.length; i++){
+        console.log(res.data.drinks[i].strDrink)
+        let j = Math.floor(i/5)
+        if( i % 5 == 0){
+            $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
+        }
+         $('#table'+j).append(`<td id = "${res.data.drinks[i].strDrink}"><button class = "pop">${res.data.drinks[i].strDrink}</button></td>`)
+    }
+}
+
+export async function handleTeq(){
+    $('#ingredientTable').empty()
+    let res = await axios({
+        method: 'Get',
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Tequila',
+    })
+
+    for(let i =0; i < res.data.drinks.length; i++){
+        console.log(res.data.drinks[i].strDrink)
+        let j = Math.floor(i/5)
+        if( i % 5 == 0){
+            $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
+        }
+         $('#table'+j).append(`<td id = "${res.data.drinks[i].strDrink}"><button class = "pop">${res.data.drinks[i].strDrink}</button></td>`)
+    }
+}
+
+export async function handleRum1(){
+    $('#ingredientTable').empty()
+    let res = await axios({
+        method: 'Get',
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Rum',
+    })
+
+    for(let i =0; i < res.data.drinks.length; i++){
+        console.log(res.data.drinks[i].strDrink)
+        let j = Math.floor(i/5)
+        if( i % 5 == 0){
+            $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
+        }
+         $('#table'+j).append(`<td id = "${res.data.drinks[i].strDrink}"><button class = "pop">${res.data.drinks[i].strDrink}</button></td>`)
+    }
+}
+
+export async function handleBran(){
+    $('#ingredientTable').empty()
+    let res = await axios({
+        method: 'Get',
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Brandy',
+    })
+
+    for(let i =0; i < res.data.drinks.length; i++){
+        console.log(res.data.drinks[i].strDrink)
+        let j = Math.floor(i/5)
+        if( i % 5 == 0){
+            $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
+        }
+         $('#table'+j).append(`<td id = "${res.data.drinks[i].strDrink}"><button class = "pop">${res.data.drinks[i].strDrink}</button></td>`)
+    }
+}
+
+export async function handleWhis(){
+    $('#ingredientTable').empty()
+    let res = await axios({
+        method: 'Get',
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Whiskey',
+    })
+
+    for(let i =0; i < res.data.drinks.length; i++){
+        console.log(res.data.drinks[i].strDrink)
+        let j = Math.floor(i/5)
+        if( i % 5 == 0){
+            $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
+        }
+         $('#table'+j).append(`<td id = "${res.data.drinks[i].strDrink}"><button class = "pop">${res.data.drinks[i].strDrink}</button></td>`)
+    }
+}
+
+
+
+
 
 export async function postPopular(){
     let pop =[]
@@ -204,6 +316,7 @@ export async function postIngredients(){
 }
 
 export function handleIngredients(){
+    $('#drinkTable').empty()
     let value = document.querySelector('#ingInput').value
     let value2 = document.querySelector('#ingInput2').value
     let value3 = document.querySelector('#ingInput3').value
@@ -358,6 +471,7 @@ export async function postAll(){
 
 
 export async function searchName(){
+    $('#ingredientTable').empty()
     let value = document.querySelector('#drinkInput').value
     addDrinkCard(value)
     document.querySelector('#drinkInput').value = ""
