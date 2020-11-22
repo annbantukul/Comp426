@@ -143,23 +143,50 @@
                 </div>
             </container>
         </section>
+
         <section class = "section has-background-light"> 
             <div class = "container" class = "column is-half">
-                <div id = "drinkCard" >
+                <div class = "content" id = "drinkCard" >
                     <div id = "drinkCardName" class = "column is-one-third"></div>
                     <ul id = "ingList" class = "column is-one-third"></ul>
                     <div id = "drinkDirections" class = "column is-one-third"></div>
-
-                    
-
                 </div>
             </div>
         </section>
+
+
+        <section class = "section has-background-light">
+            <div class = "container">
+                <div class = "content">
+                    <div id = "allIngredients">
+                        <input list = "ingredientList" id = "ingInput" class = "box" value = "">
+                        <input list = "ingredientList" id = "ingInput2" class = "box" value = "">
+                        <input list = "ingredientList" id = "ingInput3" class = "box" value = "">
+                        <input list = "ingredientList" id = "ingInput4" class = "box" value = "">
+                        <datalist id = "ingredientList">                                                    
+                        </datalist>
+                        <button type = "button" id = "ingButton" class = "button is-rounded is-small">Find me a drink!</button>
+                        <table id = "ingredientTable"></table>
+                    </div>
+                </div>
+            </container>
+        </section>
+
+        <section class = "section has-background-light">
+            <div class = "container">
+                <h98 class = "content">Search for Drink by Name</h98>
+                <input list = "drinkList" id = "drinkInput" class = "box" value = "">
+                <datalist id = "drinkList">
+                </datalist>
+                <button type = "button" id = "searchButton" class = "button is-rounded is-small">Find my drink!</button>
+            </div>
+        </section>
+
         <section class="section has-background-dark">
             <div class = "container">
             <h2 class="title has-text-white">Popular</h2>
-            <div class="box" id = "popular">
-                </div>
+            <table class="box" id = "popular">
+            </table>
         </section>
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

@@ -8,3 +8,14 @@ h99{
     font-size: 18px;
     font-weight:500;
 }
+
+.link{
+    border: 0;
+    background-color: Transparent;
+}
+
+.pop{
+    border: 0;
+    background-color: Transparent;
+    text-align: left;
+}
