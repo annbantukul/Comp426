@@ -5,6 +5,9 @@ $(document).on("click", "#tequilaButton", handleTequila)
 $(document).on("click", "#rumButton", handleRum)
 $(document).on("click", "#brandyButton", handleBrandy)
 $(document).on("click", "#whiskyButton", handleWhisky)
+$(document).on("click", "#ingButton", handleIngredients)
+$(document).on("click",".link", drinkClick)
+$(document).on("click", ".pop", drinkClick)
  postPopular()
  postVodka()
  postGin()
@@ -12,6 +15,7 @@ $(document).on("click", "#whiskyButton", handleWhisky)
  postRum()
  postBrandy()
  postWhisky()
+ postIngredients()
 })
 
 
@@ -20,10 +24,15 @@ export async function postPopular(){
         method: 'GET',
         url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic',
     })
-    for(let i of res.data.drinks){
-        $('#popular').append(`<p class ="popularDrinkNames">${i.strDrink}</p>`)
-
+    for(let i =0; i < res.data.drinks.length; i++){
+        //$('#popular').append(`<p class ="popularDrinkNames">${i.strDrink}</p>`)
+        let j = Math.floor(i/6)
+        if(i % 6 == 0){
+            $('#popular').append(`<tr id = ${"tbl"+j}></tr>`)        
+        }
+        $('#tbl'+j).append(`<td id = "${res.data.drinks[i].strDrink}"><button class = "pop">${res.data.drinks[i].strDrink}</button></td>`)
     }
+
 }
 
 
@@ -143,10 +152,8 @@ export async function addDrinkCard(drink){
     })
     let dInfo = res.data.drinks[0]
     for(let [key,val] of Object.entries(dInfo)){
-        console.log(key+ "," + val)
         if(val != null){
             if(val == drink){
-                console.log(val)
                 $('#drinkCardName').append(`<h100>${val}</h100>`)
             }
             if(key.includes("Ingredient") & val != ""){
@@ -161,17 +168,158 @@ export async function addDrinkCard(drink){
                 $('#drinkDirections').append(`<p>${val}</p>`)
             }
 
+            if(key.includes("Thumb")){
+                $('#drinkCardName').append(`<img src = ${val} alt = "picture of drnk">`)
+            }
+
         }
     }
     for(let i = 0; i < ing-vol; i++){
         ingredients.push("You choose the amount of")
     }
     let j = ingredients.length/2
-    console.log(j)
     for(let i =0; i < ingredients.length/2; i++){
         $('#ingList').append(`<li>${ingredients[j+i]}  ${ingredients[i]}</li>`)
     }
 
 }
 
-//add search by ingredients
+export async function postIngredients(){
+    let res = await axios({
+        method: 'Get',
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list',
+    })
+    for(let i = 0; i < res.data.drinks.length; i++){
+    for(let [k,v] of Object.entries(res.data.drinks[i])){
+        $('#ingredientList').append(`<option value = "${v}"`)
+        }
+    }
+}
+
+export function handleIngredients(){
+    let value = document.querySelector('#ingInput').value
+    let value2 = document.querySelector('#ingInput2').value
+    let value3 = document.querySelector('#ingInput3').value
+    let value4 = document.querySelector('#ingInput4').value
+    addIngCard(value, value2, value3, value4)
+    document.querySelector('#ingInput').value = ""
+    document.querySelector('#ingInput2').value = ""
+    document.querySelector('#ingInput3').value = ""
+    document.querySelector('#ingInput4').value = ""
+}
+
+
+export async function addIngCard(value, value2, value3, value4){
+$('#ingredientTable').empty()
+
+    let lis = []
+    if(value != ""){
+    let res = await axios({
+        method: 'Get',
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+value,
+    })
+
+    for(let i = 0; i < res.data.drinks.length; i++){
+        for(let [k,v]  of Object.entries(res.data.drinks[i])){
+            if(v != null & v != "" & k == "strDrink"){
+                lis.push(v)
+            }
+        }
+    }
+}
+
+    let lis2 = []
+    if(value2 != ""){
+    let res2 = await axios({
+        method: 'Get',
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+value2,
+    })
+
+    for(let i = 0; i < res2.data.drinks.length; i++){
+        for(let [k,v]  of Object.entries(res2.data.drinks[i])){
+            if(v != null & v != "" & k == "strDrink"){
+                lis2.push(v)
+            }
+        }
+    }
+}
+    let lis3 = []
+    if(value3 != ""){
+    let res3 = await axios({
+        method: 'Get',
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+value3,
+    })
+
+    for(let i = 0; i < res3.data.drinks.length; i++){
+        for(let [k,v]  of Object.entries(res3.data.drinks[i])){
+            if(v != null & v != "" & k == "strDrink"){
+                lis3.push(v)
+            }
+        }
+    }
+}
+    let lis4 = []
+    if(value4 != ""){
+    let res4 = await axios({
+        method: 'Get',
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+value4,
+    })
+
+    for(let i = 0; i < res4.data.drinks.length; i++){
+        for(let [k,v]  of Object.entries(res4.data.drinks[i])){
+            if(v != null & v != "" & k == "strDrink"){
+                lis4.push(v)
+            }
+        }
+    }
+}
+
+let count = 0
+let finList = []
+if(lis.length != 0 ){
+    count ++
+    finList = finList.concat(lis)
+}
+
+if(lis2.length != 0){
+    count ++
+    finList = finList.concat(lis2)
+}
+
+if(lis3.length != 0){
+    count++
+    finList = finList.concat(lis3)
+}
+
+if(lis4.length != 0){
+    count++
+    finList = finList.concat(lis4)
+}
+
+let uniq = [...new Set(finList)]
+let finfinList = []
+
+    for(let  i=0; i < uniq.length; i++){
+        if((numTimes(finList, uniq[i]) / count) == 1){
+            finfinList.push(uniq[i])
+        }
+    }
+
+    for(let i =0; i < finfinList.length; i++){
+    let j = Math.floor(i/6)
+    if(i % 6 == 0){
+        $('#ingredientTable').append(`<tr id = ${"tb"+j}></tr>`)
+    }
+    $('#tb'+j).append(`<td id = "${finfinList[i]}"><button class = "link">${finfinList[i]}</button></td>`)
+}
+}
+
+
+export function numTimes(array, value){
+    return array.filter((v) => (v == value)).length
+}
+
+export function drinkClick(e){
+    let id = e.target.closest("td").getAttribute('id')
+    addDrinkCard(id)
+}
