@@ -10,5 +10,12 @@ h99{
 }
 
 .link{
-    border: 0,
+    border: 0;
+    background-color: Transparent;
+}
+
+.pop{
+    border: 0;
+    background-color: Transparent;
+    text-align: left;
 }

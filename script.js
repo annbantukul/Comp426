@@ -8,6 +8,7 @@ $(document).on("click", "#whiskyButton", handleWhisky)
 $(document).on("click", "#ingButton", handleIngredients)
 $(document).on("click",".link", drinkClick)
 $(document).on("click", ".pop", drinkClick)
+$(document).on("click", "#searchButton", searchName)
  postPopular()
  postVodka()
  postGin()
@@ -16,21 +17,26 @@ $(document).on("click", ".pop", drinkClick)
  postBrandy()
  postWhisky()
  postIngredients()
+ postAll()
 })
 
 
 export async function postPopular(){
+    let pop =[]
+    for(let i = 0; i < 14; i++){
     let res = await axios({
-        method: 'GET',
-        url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic',
+        method: 'Get',
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/random.php',
     })
-    for(let i =0; i < res.data.drinks.length; i++){
+    pop.push(res.data.drinks[0].strDrink)
+    }
+    for(let i =0; i < pop.length; i++){
         //$('#popular').append(`<p class ="popularDrinkNames">${i.strDrink}</p>`)
-        let j = Math.floor(i/6)
-        if(i % 6 == 0){
+        let j = Math.floor(i/7)
+        if(i % 7 == 0){
             $('#popular').append(`<tr id = ${"tbl"+j}></tr>`)        
         }
-        $('#tbl'+j).append(`<td id = "${res.data.drinks[i].strDrink}"><button class = "pop">${res.data.drinks[i].strDrink}</button></td>`)
+        $('#tbl'+j).append(`<td id = "${pop[i]}"><button class = "pop">${pop[i]}</button></td>`)
     }
 
 }
@@ -323,3 +329,40 @@ export function drinkClick(e){
     let id = e.target.closest("td").getAttribute('id')
     addDrinkCard(id)
 }
+
+
+export async function randDrink(){
+    let pop =[]
+    for(let i = 0; i < 25; i++){
+    let res = await axios({
+        method: 'Get',
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/random.php',
+    })
+    pop.push(res.data.drinks[0].strDrink)
+    }
+
+}
+
+export async function postAll(){
+    let res = await axios({
+        method: 'Get',
+        url: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail',
+    })
+    console.log(res.data)
+
+    for(let i of res.data.drinks){
+        $('#drinkList').append(`<option value = "${i.strDrink}">`)
+    }
+
+}
+
+
+export async function searchName(){
+    let value = document.querySelector('#drinkInput').value
+    addDrinkCard(value)
+    document.querySelector('#drinkInput').value = ""
+}
+
+
+
+
