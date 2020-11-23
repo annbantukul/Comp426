@@ -6,9 +6,9 @@
         <link rel = "stylesheet" href = "style.css">
         <title>Cocktail Finder</title>
 
-        <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="script.js" type="module"></script> -->
+        <script src="login.js" type="module"></script> 
     </head>
     <body>
 
@@ -62,17 +62,17 @@
                         <div class="column is-one-third">
                             <h2 class="title has-text-centered">Log In</h2>
                                 <div class="column">
-                                    <form>
+                                    <form id="loginForm">
                                         <div class="field">
                                             <label class="label">Username</label>
                                             <div class="control">
-                                                <input class="input" type="text" placeholder="username" name="username">
+                                                <input class="input" id="usernameFeild" type="text" placeholder="username" name="username">
                                             </div>
                                         </div>
                                         <div class="field">
                                             <label class="label">Password</label>
                                             <div class="control">
-                                                <input class="input" type="password" placeholder="password">
+                                                <input class="input" id="passwordFeild" type="password" placeholder="password">
                                             </div>
                                         </div>
                                         <div class="field">
@@ -91,11 +91,5 @@
                 </div>
             </container>
         </section>
-
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="script.js" type = "module"></script>
-        <script src = "node_modules/axios/dist/axios.js"></script>
-
     </body>
-
 </html>
