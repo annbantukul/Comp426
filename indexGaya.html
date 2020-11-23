@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel = "stylesheet" href = "bulma.css">
+        <link rel = "stylesheet" href = "style.css">
+        <title>Cocktail Finder</title>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="script.js" type="module"></script>
+    </head>
+    <body>
+
+
+        <section class="hero is-bold is-primary is-medium">
+            <!-- Hero head: will stick at the top -->
+            <div class="hero-head">
+              <nav class="navbar">
+                <div class="container">
+                  <div class="navbar-brand">
+                    <a class="navbar-item" href = "index.html">
+                      <img src="DrinkUp.svg" alt="Logo">
+                    </a>
+                    <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                      <span>
+                          <a href="login.html">Login</a>
+                      </span>
+                      <span>Sign-up</span>
+                      <span></span>
+                    </span>
+                  </div>
+                  <div id="navbarMenuHeroA" class="navbar-menu">
+                    <div class="navbar-end">
+                      <span class="navbar-item">
+                        <a class="button is-dark" href="login.html">
+                          <span>Login</span>
+                        </a>
+                      </span>
+                      <span class="navbar-item">
+                        <a class="button is-primary is-inverted" href="signup.html">
+                          <span>Sign Up</span>
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            </div>
+        </section>
+        <section class="section has-background-dark">
+            <div class="container">
+                <div class="center_image">
+                    <img src="DrinkUp.svg" alt="Logo">
+                </div>
+                <h2 class="subtitle is-4 has-text-white is-family-monospace has-text-centered">
+                    for that cocktail you're looking for
+                </h2>
+                <h4 class = "subtitle is-6 has-text-primary is-family-monospace has-text-centered">Ann Bantukul, Samuel Chilton, Gayathri Raghavendra</h4>
+            </div>
+          </section>
+        <section class="section has-background-primary">
+            <div class="container">
+                <div class="content">
+                    <h1 class="is-family-monospace has-text-centered">Search for Drink by Base Liquor</h1>
+                    <div class="columns">
+                        <div class="column is-half">       
+                            <section class="section has-background-dark">
+                                    <div class = "container">
+                                        <div class="columns">
+                                            <div class="column">
+                                                <button type = "button" class = "button is-success is-light is-fullwidth" id = "vod">Vodka</button>
+                                            </div>
+                                            <div class="column">
+                                                <button type = "button" class = "button is-success is-light is-fullwidth" id = "gin">Gin</button>
+                                            </div>
+                                            <div class="column">
+                                                <button type = "button" class = "button is-success is-light is-fullwidth" id = "teq">Tequila</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class = "container">
+                                        <div class="columns">
+                                            <div class="column">
+                                                <button type = "button" class = "button is-success is-light is-fullwidth" id = "rum">Rum</button>
+                                            </div>
+                                            <div class="column">
+                                                <button type = "button" class = "button is-success is-light is-fullwidth" id = "bran">Brandy</button>
+                                            </div>
+                                            <div class="column">
+                                                <button type = "button" class = "button is-success is-light is-fullwidth" id = "whis">Whisky</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="content">
+                                        <div class=columns>
+                                            <div class="column is-one-third">
+                                                <h2 class="title has-text-white">Vodka Drinks</h2>
+                                                <div class = "control">
+                                                    <input list = "vodkaList" id = "vodkaInput" class = "box">
+                                                    <datalist id = "vodkaList">                
+                                                    </datalist>
+                                                    <button type = "button" id = "vodkaButton" class = "button is-rounded is-small">clink!</button>
+                                                </div>
+
+                                            </div>
+                                            <div class="column is-one-third">
+                                                <h2 class="title has-text-white">Gin Drinks</h2>
+                                                <div class="control">
+                                                    <input list = "ginList" id = "ginInput" class = "box">
+                                                    <datalist id = "ginList">                
+                                                    </datalist>
+                                                    <button type = "button" id = "ginButton" class = "button is-rounded is-small">clink!</button>                
+
+                                                </div>
+                                            </div>
+                                            <div class="column is-one-third">
+                                                <h2 class="title has-text-white">Tequila Drinks</h2>
+                                                <div class="control">
+                                                    <input list = "tequilaList" id = "tequilaInput" class = "box">
+                                                    <datalist id = "tequilaList">                
+                                                    </datalist>
+                                                    <button type = "button" id = "tequilaButton" class = "button is-rounded is-small">clink!</button>
+                    
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    </div>
+
+                                    <section class="section">
+                                        <div class = "content" id = "drinkCard" >
+                                            <div class = "columns">
+                                                <div id = "drinkCardName" class = "column is-one-third"></div>
+                                                <ul id = "ingList" class = "column is-one-third"></ul>
+                                                <div id = "drinkDirections" class = "column is-one-third"></div>
+                                            </div>
+                                        </div>
+                                    </section>
+                        </section>
+                        <!-- <section>
+                            <div class = "column is-one-third">
+                                <table id = "drinkTable">
+                                </table>
+                            </div>
+                        </section> -->
+
+
+
+
+                        <!-- <section class="section has-background-dark">
+                            <div class="container">
+                                <div class="content">
+                                    <div class=columns>
+                                        <div class="column is-one-third">
+                                            <h2 class="title has-text-white">Rum Drinks</h2>
+                                            <div class = "control">
+                                                <input list = "rumList" id = "rumInput" class = "box">
+                                                <datalist id = "rumList">                
+                                                </datalist>
+                                                <button type = "button" id = "rumButton" class = "button is-rounded is-small">clink!</button>
+                                            </div>
+
+                                        </div>
+                                        <div class="column is-one-third">
+                                            <h2 class="title has-text-white">Brandy Drinks</h2>
+                                            <div class="control">
+                                                <input list = "brandyList" id = "brandyInput" class = "box">
+                                                <datalist id = "brandyList">                
+                                                </datalist>
+                                                <button type = "button" id = "brandyButton" class = "button is-rounded is-small">clink!</button>                
+
+                                            </div>
+                                        </div>
+                                        <div class="column is-one-third">
+                                            <h2 class="title has-text-white">Whisky Drinks</h2>
+                                            <div class="control">
+                                                <input list = "whiskyList" id = "whiskyInput" class = "box">
+                                                <datalist id = "whiskyList">                                                    
+                                                </datalist>
+                                                <button type = "button" id = "whiskyButton" class = "button is-rounded is-small">clink!</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section> -->
+
+                            </div>
+                            <div class = "column is-half">
+                                    <table id = "drinkTable">
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </container>
+        </section>
+
+        <!--<section class = "section has-background-light"> 
+            <div class = "container" class = "column is-half">
+                <div class = "content" id = "drinkCard" >
+                    <div id = "drinkCardName" class = "column is-one-third"></div>
+                    <ul id = "ingList" class = "column is-one-third"></ul>
+                    <div id = "drinkDirections" class = "column is-one-third"></div>
+                </div>
+            </div>
+        </section>-->
+
+
+        <section class = "section has-background-light">
+            <div class = "container">
+                <div class = "content level" >
+                    <div id = "allIngredients" class = "level-left">
+                        <input list = "ingredientList" id = "ingInput" class = "box"  value = "">
+                        <input list = "ingredientList" id = "ingInput2" class = "box " value = "">
+                        <input list = "ingredientList" id = "ingInput3" class = "box " value = "">
+                        <input list = "ingredientList" id = "ingInput4" class = "box " value = "">
+                        <datalist id = "ingredientList">                                                    
+                        </datalist>
+                        <button type = "button" id = "ingButton" class = "button is-rounded is-small">Find me a drink!</button>
+                        <table id = "ingredientTable" class = "level-right column is-half"></table>  
+                    </div>
+                </div>
+            </container>
+        </section>
+
+        <section class = "section has-background-light">
+            <div class = "container">
+                <h98 class = "content">Search for Drink by Name</h98>
+                <input list = "drinkList" id = "drinkInput" class = "box" value = "">
+                <datalist id = "drinkList">
+                </datalist>
+                <button type = "button" id = "searchButton" class = "button is-rounded is-small">Find my drink!</button>
+            </div>
+        </section>
+
+        <section class="section has-background-dark">
+            <div class = "container">
+            <h2 class="title has-text-white">Popular Drinks</h2>
+            <table class="box" id = "popular">
+            </table>
+        </section>
+
+        <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="script.js" type = "module"></script>
+        <script src = "node_modules/axios/dist/axios.js"></script> -->
+
+    </body>
+
+</html>

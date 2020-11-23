@@ -15,6 +15,10 @@ $(document).on("click", "#teq", handleTeq)
 $(document).on("click", "#rum", handleRum1)
 $(document).on("click", "#bran", handleBran)
 $(document).on("click", "#whis", handleWhis)
+$('#liquorButton').on("click", switchToLiquor)
+$('#popularButton').on("click", switchToPopular)
+$('#ingredientButton').on("click", switchToIngredient)
+$('#nameButton').on("click", switchToName)
  postPopular()
  postVodka()
  postGin()
@@ -26,6 +30,99 @@ $(document).on("click", "#whis", handleWhis)
  postAll()
 })
 
+export function switchToName(){
+    $('#ingredientTable').empty()
+    $('#dependsOnSearch').empty()
+    $('.content h1').html("Search for drink by name")
+    $('#dependsOnSearch').append(`        <section class = "section has-background-dark">
+    <div class = "container has-text-white">
+        <h98 class = "content">What drink are you looking for?</h98>
+        <input list = "drinkList" id = "drinkInput" class = "box" value = "">
+        <datalist id = "drinkList">
+        </datalist>
+        <button type = "button" id = "searchButton" class = "button is-rounded is-small">Find my drink!</button>
+    </div>
+</section>`)
+postAll()
+}
+
+
+export function switchToIngredient(){
+    $('#ingredientTable').empty()
+    $('#dependsOnSearch').empty()
+    $('.content h1').html("Search for drink by ingredients")
+    $('#dependsOnSearch').append(`<section class = "section has-background-dark">
+    <div class = "has-text-white">
+    <h98>What do you want to use?</h98>
+    </div>
+    <div class = "columns">
+                         <div class = "column">
+                            <input list = "ingredientList" id = "ingInput" class = "box"  value = "">
+                            <input list = "ingredientList" id = "ingInput2" class = "box " value = "">
+                        </div>
+                        <div class = "column">
+                            <input list = "ingredientList" id = "ingInput3" class = "box " value = "">
+                            <input list = "ingredientList" id = "ingInput4" class = "box " value = "">
+                        </div>
+                            <datalist id = "ingredientList">                                                    
+                            </datalist>
+                </div>
+                <div class = "column">
+                <span><button type = "button" id = "ingButton" class = "button is-rounded is-small">Find me a drink!</button></span>
+            </div>
+            </section>`)
+    postIngredients()
+}
+
+export function switchToPopular(){
+    $('#ingredientTable').empty()
+    $('#dependsOnSearch').empty()
+    $('.content h1').html("Search for drink by popular drinks")
+    $('#dependsOnSearch').append(`<section class="section has-background-dark">
+    <h98 class="has-text-white">What popular drink do you like?</h98>
+    <table class="box" id = "popular">
+    </table>
+</section>`)
+    postPopular()
+}
+
+
+export function switchToLiquor(){
+    $('#ingredientTable').empty()
+    $('#dependsOnSearch').empty()
+    $('.content h1').html("Search for drink by base liquor")
+    $('#dependsOnSearch').append(`
+    <section class="section has-background-dark">
+    <h98 class="has-text-white">What liquor do you have?</h98>
+    <div class = "container">
+        <div class="columns">
+            <div class="column">
+                <button type = "button" class = "button is-success is-light is-fullwidth" id = "vod">Vodka</button>
+            </div>
+            <div class="column">
+                <button type = "button" class = "button is-success is-light is-fullwidth" id = "gin">Gin</button>
+            </div>
+            <div class="column">
+                <button type = "button" class = "button is-success is-light is-fullwidth" id = "teq">Tequila</button>
+            </div>
+        </div>
+    </div>
+    <div class = "container">
+        <div class="columns">
+            <div class="column">
+                <button type = "button" class = "button is-success is-light is-fullwidth" id = "rum">Rum</button>
+            </div>
+            <div class="column">
+                <button type = "button" class = "button is-success is-light is-fullwidth" id = "bran">Brandy</button>
+            </div>
+            <div class="column">
+                <button type = "button" class = "button is-success is-light is-fullwidth" id = "whis">Whisky</button>
+            </div>
+        </div>
+    </div>
+</section>`)
+}
+
 export async function handleVod(){
     $('#ingredientTable').empty()
     let res = await axios({
@@ -35,8 +132,8 @@ export async function handleVod(){
 
     for(let i =0; i < res.data.drinks.length; i++){
         console.log(res.data.drinks[i].strDrink)
-        let j = Math.floor(i/5)
-        if( i % 5 == 0){
+        let j = Math.floor(i/10)
+        if( i % 10 == 0){
             $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
         }
          $('#table'+j).append(`<td id = "${res.data.drinks[i].strDrink}"><button class = "pop">${res.data.drinks[i].strDrink}</button></td>`)
@@ -52,8 +149,8 @@ export async function handleGin2(){
 
     for(let i =0; i < res.data.drinks.length; i++){
         console.log(res.data.drinks[i].strDrink)
-        let j = Math.floor(i/5)
-        if( i % 5 == 0){
+        let j = Math.floor(i/10)
+        if( i % 10 == 0){
             $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
         }
          $('#table'+j).append(`<td id = "${res.data.drinks[i].strDrink}"><button class = "pop">${res.data.drinks[i].strDrink}</button></td>`)
@@ -69,8 +166,8 @@ export async function handleTeq(){
 
     for(let i =0; i < res.data.drinks.length; i++){
         console.log(res.data.drinks[i].strDrink)
-        let j = Math.floor(i/5)
-        if( i % 5 == 0){
+        let j = Math.floor(i/10)
+        if( i % 10 == 0){
             $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
         }
          $('#table'+j).append(`<td id = "${res.data.drinks[i].strDrink}"><button class = "pop">${res.data.drinks[i].strDrink}</button></td>`)
@@ -86,8 +183,8 @@ export async function handleRum1(){
 
     for(let i =0; i < res.data.drinks.length; i++){
         console.log(res.data.drinks[i].strDrink)
-        let j = Math.floor(i/5)
-        if( i % 5 == 0){
+        let j = Math.floor(i/10)
+        if( i % 10 == 0){
             $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
         }
          $('#table'+j).append(`<td id = "${res.data.drinks[i].strDrink}"><button class = "pop">${res.data.drinks[i].strDrink}</button></td>`)
@@ -103,8 +200,8 @@ export async function handleBran(){
 
     for(let i =0; i < res.data.drinks.length; i++){
         console.log(res.data.drinks[i].strDrink)
-        let j = Math.floor(i/5)
-        if( i % 5 == 0){
+        let j = Math.floor(i/10)
+        if( i % 10 == 0){
             $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
         }
          $('#table'+j).append(`<td id = "${res.data.drinks[i].strDrink}"><button class = "pop">${res.data.drinks[i].strDrink}</button></td>`)
@@ -120,8 +217,8 @@ export async function handleWhis(){
 
     for(let i =0; i < res.data.drinks.length; i++){
         console.log(res.data.drinks[i].strDrink)
-        let j = Math.floor(i/5)
-        if( i % 5 == 0){
+        let j = Math.floor(i/10)
+        if( i % 10 == 0){
             $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
         }
          $('#table'+j).append(`<td id = "${res.data.drinks[i].strDrink}"><button class = "pop">${res.data.drinks[i].strDrink}</button></td>`)
@@ -134,7 +231,7 @@ export async function handleWhis(){
 
 export async function postPopular(){
     let pop =[]
-    for(let i = 0; i < 14; i++){
+    for(let i = 0; i < 15; i++){
     let res = await axios({
         method: 'Get',
         url: 'https://www.thecocktaildb.com/api/json/v1/1/random.php',
@@ -143,8 +240,8 @@ export async function postPopular(){
     }
     for(let i =0; i < pop.length; i++){
         //$('#popular').append(`<p class ="popularDrinkNames">${i.strDrink}</p>`)
-        let j = Math.floor(i/7)
-        if(i % 7 == 0){
+        let j = Math.floor(i/5)
+        if(i % 5 == 0){
             $('#popular').append(`<tr id = ${"tbl"+j}></tr>`)        
         }
         $('#tbl'+j).append(`<td id = "${pop[i]}"><button class = "pop">${pop[i]}</button></td>`)
@@ -426,8 +523,8 @@ let finfinList = []
     }
 
     for(let i =0; i < finfinList.length; i++){
-    let j = Math.floor(i/6)
-    if(i % 6 == 0){
+    let j = Math.floor(i/10)
+    if(i % 10 == 0){
         $('#ingredientTable').append(`<tr id = ${"tb"+j}></tr>`)
     }
     $('#tb'+j).append(`<td id = "${finfinList[i]}"><button class = "link">${finfinList[i]}</button></td>`)

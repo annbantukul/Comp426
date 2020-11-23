@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel = "stylesheet" href = "bulma.css">
+        <link rel = "stylesheet" href = "style.css">
+        <title>Cocktail Finder</title>
+
+        <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="script.js" type="module"></script> -->
+    </head>
+    <body>
+
+
+        <section class = "hero is-primary is-bold is-medium">
+            <div class = "hero-body">
+                <div class = "container">
+                    <h1 class = "page-title">What cocktail are you looking for?</h1>
+                    <h2 class = "attribution">Ann Bantukul, Samuel Chilton, Gayathri Raghavendra</h2>
+                </div>
+            </div>
+        </section>
+        <section class="section has-background-light">
+            <div class="container">
+                <div class="content">
+                    <div class="columns">
+                        <div class="column is-half">
+                            <h2 class="title">Sign-up</h2>
+                                <div class="column">
+                                    <form>
+                                        <div class="field">
+                                            <label class="label">Username</label>
+                                            <div class="control">
+                                                <input class="input" type="text" placeholder="username" name="username">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label class="label">Password</label>
+                                            <div class="control">
+                                                <input class="input" type="password" placeholder="password">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="field">
+                                            <label class="label">Repeat Password</label>
+                                            <div class="control">
+                                                <input class="input" type="password" placeholder="password" name="password">
+                                        </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="control">
+                                                <input class="button is-dark" type="submit"/>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                        </div>
+                        <div class="column">       
+                            <section class="section has-background-dark">
+                            <div class="container">
+                                <div class="content">
+                                    <div class=columns>
+                                        <div class="column is-one-third">
+                                            <h2 class="title has-text-white">Vodka Drinks</h2>
+                                            <div class = "control">
+                                                <input list = "vodkaList" id = "vodkaInput" class = "box">
+                                                <datalist id = "vodkaList">                
+                                                </datalist>
+                                                <button type = "button" id = "vodkaButton" class = "button is-rounded is-small">clink!</button>
+                                            </div>
+                                            <!-- <div class="box">
+                                                <p>My drink 2</p>
+                                            </div> -->
+                                        </div>
+                                        <div class="column is-one-third">
+                                            <h2 class="title has-text-white">Gin Drinks</h2>
+                                            <div class="control">
+                                                <input list = "ginList" id = "ginInput" class = "box">
+                                                <datalist id = "ginList">                
+                                                </datalist>
+                                                <button type = "button" id = "ginButton" class = "button is-rounded is-small">clink!</button>                
+                                                <!-- <p>My drink 1</p> -->
+                                            </div>
+                                        </div>
+                                        <div class="column is-one-third">
+                                            <h2 class="title has-text-white">Tequila Drinks</h2>
+                                            <div class="control">
+                                                <input list = "tequilaList" id = "tequilaInput" class = "box">
+                                                <datalist id = "tequilaList">                
+                                                </datalist>
+                                                <button type = "button" id = "tequilaButton" class = "button is-rounded is-small">clink!</button>
+                                                <!-- <p>My drink 3</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="section has-background-dark">
+                            <div class="container">
+                                <div class="content">
+                                    <div class=columns>
+                                        <div class="column is-one-third">
+                                            <h2 class="title has-text-white">Rum Drinks</h2>
+                                            <div class = "control">
+                                                <input list = "rumList" id = "rumInput" class = "box">
+                                                <datalist id = "rumList">                
+                                                </datalist>
+                                                <button type = "button" id = "rumButton" class = "button is-rounded is-small">clink!</button>
+                                            </div>
+                                            <!-- <div class="box">
+                                                <p>My drink 2</p>
+                                            </div> -->
+                                        </div>
+                                        <div class="column is-one-third">
+                                            <h2 class="title has-text-white">Brandy Drinks</h2>
+                                            <div class="control">
+                                                <input list = "brandyList" id = "brandyInput" class = "box">
+                                                <datalist id = "brandyList">                
+                                                </datalist>
+                                                <button type = "button" id = "brandyButton" class = "button is-rounded is-small">clink!</button>                
+                                                <!-- <p>My drink 1</p> -->
+                                            </div>
+                                        </div>
+                                        <div class="column is-one-third">
+                                            <h2 class="title has-text-white">Whisky Drinks</h2>
+                                            <div class="control">
+                                                <input list = "whiskyList" id = "whiskyInput" class = "box">
+                                                <datalist id = "whiskyList">                                                    
+                                                </datalist>
+                                                <button type = "button" id = "whiskyButton" class = "button is-rounded is-small">clink!</button>
+                                                <!-- <p>My drink 3</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </container>
+        </section>
+
+        <section class = "section has-background-light"> 
+            <div class = "container" class = "column is-half">
+                <div class = "content" id = "drinkCard" >
+                    <div id = "drinkCardName" class = "column is-one-third"></div>
+                    <ul id = "ingList" class = "column is-one-third"></ul>
+                    <div id = "drinkDirections" class = "column is-one-third"></div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class = "section has-background-light">
+            <div class = "container">
+                <div class = "content">
+                    <div id = "allIngredients">
+                        <input list = "ingredientList" id = "ingInput" class = "box" value = "">
+                        <input list = "ingredientList" id = "ingInput2" class = "box" value = "">
+                        <input list = "ingredientList" id = "ingInput3" class = "box" value = "">
+                        <input list = "ingredientList" id = "ingInput4" class = "box" value = "">
+                        <datalist id = "ingredientList">                                                    
+                        </datalist>
+                        <button type = "button" id = "ingButton" class = "button is-rounded is-small">Find me a drink!</button>
+                        <table id = "ingredientTable"></table>
+                    </div>
+                </div>
+            </container>
+        </section>
+
+        <section class = "section has-background-light">
+            <div class = "container">
+                <h98 class = "content">Search for Drink by Name</h98>
+                <input list = "drinkList" id = "drinkInput" class = "box" value = "">
+                <datalist id = "drinkList">
+                </datalist>
+                <button type = "button" id = "searchButton" class = "button is-rounded is-small">Find my drink!</button>
+            </div>
+        </section>
+
+        <section class="section has-background-dark">
+            <div class = "container">
+            <h2 class="title has-text-white">Popular</h2>
+            <table class="box" id = "popular">
+            </table>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="script.js" type = "module"></script>
+        <script src = "node_modules/axios/dist/axios.js"></script>
+
+    </body>
+
+</html>

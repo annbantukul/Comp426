@@ -1,6 +1,6 @@
 h100{
     font-size: 20px;
-    color: blueviolet;
+    color: darkslategray;
     font-weight: 800;
 }
 
@@ -9,18 +9,28 @@ h99{
     font-weight:500;
 }
 
-.link{
+
+.link,.pop {
     border: 0;
     background-color: Transparent;
+    font-size: 15px;
+    color: darkcyan;
+    text-align: left;
 }
 
-.pop{
+#popular{
     border: 0;
-    background-color: Transparent;
-    text-align: left;
+    background-color: white;
+    font-size: 20px;
+    color: black;
 }
 
 .center_image{
     display: flex;
     justify-content: center;
+}
+
+#drinkTable{
+    width: 300 px;
+    border-color: transparent;
 }
