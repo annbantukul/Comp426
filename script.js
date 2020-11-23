@@ -15,6 +15,7 @@ $(document).on("click", "#teq", handleTeq)
 $(document).on("click", "#rum", handleRum1)
 $(document).on("click", "#bran", handleBran)
 $(document).on("click", "#whis", handleWhis)
+$(document).on("click", "#favButton", handleFavorite);
 $('#liquorButton').on("click", switchToLiquor)
 $('#popularButton').on("click", switchToPopular)
 $('#ingredientButton').on("click", switchToIngredient)
@@ -29,6 +30,27 @@ $('#nameButton').on("click", switchToName)
  postIngredients()
  postAll()
 })
+
+async function handleFavorite(event){
+    let drinkName = event.target.getAttribute("data-drinkName");
+    
+    try{        
+        const result = await axios({
+            method: 'POST',
+            url: 'https://warm-oasis-53340.herokuapp.com/favorite',
+            withCredentials: true,
+            data: {
+                'drinkName': `${drinkName}`
+            }
+        });
+    console.log(result);
+    return;
+    }
+    catch(e){
+        alert("Please Login to Favorite Drinks...");
+        return;
+    }
+}
 
 export function switchToName(){
     $('#ingredientTable').empty()
