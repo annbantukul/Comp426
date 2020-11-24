@@ -119,22 +119,22 @@ async function updateFavorite(){
         url: 'https://warm-oasis-53340.herokuapp.com/favorite',
         withCredentials: true,
     });
-    console.log("the result var inside updateFavorite");
-    console.log(result);
+    //console.log("the result var inside updateFavorite");
+    //console.log(result);
     let favoritesIndex = result.data;
     let drinkArray = [];
 
-    console.log("drink array is " + drinkArray);
+    //console.log("drink array is " + drinkArray);
     for(let index in favoritesIndex){
         let name = await axios({
             method: "GET",
             url: `https://warm-oasis-53340.herokuapp.com/favorite/${favoritesIndex[index]}`,
             withCredentials: true,
         });
-        console.log(name)
+        //console.log(name)
         drinkArray.push(name.favorites);
     }
-
+    console.log(drinkArray + " is drink array");
     for(let index in drinkArray){
         $('#dependsOnSearch').append(`
                                     <div class="box">
