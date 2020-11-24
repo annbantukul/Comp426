@@ -17,6 +17,14 @@
   }
 }
 
+.favDrinkButtonDrink{
+  border: 0;
+  background-color: Transparent;
+  font-size: 30px;
+}
+
+
+
 .delete, .modal-close, .button, .file, .breadcrumb, .pagination-previous,
 .pagination-next,
 .pagination-link,
