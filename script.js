@@ -34,6 +34,7 @@ $('#unFavButton').on("click", unfavoriteDrink);
 })
 
 async function unfavoriteDrink(event){
+    console.log("unfav");
     let drink = event.target.getAttribute("data-drinkID");
 
     const result = await axios({
