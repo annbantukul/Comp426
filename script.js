@@ -69,7 +69,6 @@ export function switchToName(){
 postAll()
 }
 
-
 export function switchToIngredient(){
     $('#ingredientTable').empty()
     $('#dependsOnSearch').empty()
@@ -120,11 +119,12 @@ async function updateFavorite(){
         url: 'https://warm-oasis-53340.herokuapp.com/favorite',
         withCredentials: true,
     });
-
+    console.log("the result var inside updateFavorite");
     console.log(result);
 
     let favoritesIndex = result.data;
     let drinkArray = [];
+    console.log("drink array is " + drinkArray);
     for(let index in favoritesIndex){
         let name = await axios({
             method: "GET",
