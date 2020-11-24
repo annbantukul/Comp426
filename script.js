@@ -23,6 +23,7 @@ $('#nameButton').on("click", switchToName)
 $('#favoriteButton').on("click", switchToFavorite)
 //$('.unFavButton').on("click", unfavoriteDrink);
 $(document).on("click", ".unFavButton", unfavoriteDrink);
+$(document).on("click", ".favDrinkButtonDrink", showFavDrinkCard)
 
  postPopular()
  postVodka()
@@ -34,6 +35,12 @@ $(document).on("click", ".unFavButton", unfavoriteDrink);
  postIngredients()
  postAll()
 })
+
+function showFavDrinkCard(e){
+    let drink = e.target.getAttribute("id").slice(0,-1)
+    addDrinkCard(drink)
+
+}
 
 async function unfavoriteDrink(event){
     let drink = event.target.getAttribute("data-drinkID");
@@ -153,7 +160,7 @@ async function getFavorites(){
         //We may want to actually pass the drink id because that might be easier to search for. Idk yet
         $('#dependsOnSearch').append(`
                                     <div class="box">
-                                        <h2>${drinkArray[i]}</h2>
+                                        <button type = "button" id = "${drinkArray[i]}b" class ="favDrinkButtonDrink">${drinkArray[i]}</button>
                                         <button type = "button" class = "unFavButton button is-rounded is-small" data-drinkID=${idArray[i]}>Unfavorite</button>
                                     </div>`);
     }
