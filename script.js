@@ -121,13 +121,13 @@ async function updateFavorite(){
     });
     console.log("the result var inside updateFavorite");
     console.log(result);
-
     let favoritesIndex = result.data;
     let drinkArray = [];
+
     console.log("drink array is " + drinkArray);
     for(let index in favoritesIndex){
         let name = await axios({
-            method: "GET",
+            method: "PUT",
             url: `https://warm-oasis-53340.herokuapp.com/favorite/${favoritesIndex[index]}`,
             withCredentials: true,
             params: {
