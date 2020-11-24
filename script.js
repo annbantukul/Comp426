@@ -20,6 +20,7 @@ $('#liquorButton').on("click", switchToLiquor)
 $('#popularButton').on("click", switchToPopular)
 $('#ingredientButton').on("click", switchToIngredient)
 $('#nameButton').on("click", switchToName)
+$('#favoriteButton').on("click", switchToFavorite)
  postPopular()
  postVodka()
  postGin()
@@ -108,6 +109,30 @@ export function switchToPopular(){
     postPopular()
 }
 
+function switchToFavorite(){
+    $('#dependsOnSearch').empty();
+    $('.content h1').html("Favorites");
+    updateFavorite();
+}
+async function updateFavorite(){
+    const result = await axios({
+        method: 'GET',
+        url: 'https://warm-oasis-53340.herokuapp.com/favorite',
+        withCredentials: true,
+    });
+
+    console.log(result);
+
+    let favorites = result.data;
+
+    for(let index in favorites){
+        $('#dependsOnSearch').append(`
+                                    <div class="box">
+                                        <h2>${favorites[index]}</h2>
+                                        <button type = "button" id = "unFavButton" class = "button is-rounded is-small">Unfavorite</button>
+                                    </div>`);
+    }
+}
 
 export function switchToLiquor(){
     $('#ingredientTable').empty()
