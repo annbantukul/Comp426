@@ -123,13 +123,26 @@ async function updateFavorite(){
 
     console.log(result);
 
-    let favorites = result.data;
+    let favoritesIndex = result.data;
+    let drinkArray = [];
+    for(let index in favoritesIndex){
+        let name = await axios({
+            method: "GET",
+            url: `https://warm-oasis-53340.herokuapp.com/favorite/${favoritesIndex[index]}`,
+            withCredentials: true,
+            params: {
+                'id': favoritesIndex[index],
+            }
+        });
+        console.log(name)
+        drinkArray.push(name.data);
+    }
 
-    for(let index in favorites){
+    for(let index in drinkArray){
         $('#dependsOnSearch').append(`
                                     <div class="box">
-                                        <h2>${favorites[index]}</h2>
-                                        <button type = "button" id = "unFavButton" class = "button is-rounded is-small">Unfavorite</button>
+                                        <h2>${drinkArray[index]}</h2>
+                                        <button type = "button" id = "unFavButton" class = "button is-rounded is-small" data-drink=${drinkArray[index]}>Unfavorite</button>
                                     </div>`);
     }
 }
