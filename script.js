@@ -21,6 +21,7 @@ $('#popularButton').on("click", switchToPopular)
 $('#ingredientButton').on("click", switchToIngredient)
 $('#nameButton').on("click", switchToName)
 $('#favoriteButton').on("click", switchToFavorite)
+$('#unFavButton').on("click", unfavoriteDrink);
  postPopular()
  postVodka()
  postGin()
@@ -31,6 +32,17 @@ $('#favoriteButton').on("click", switchToFavorite)
  postIngredients()
  postAll()
 })
+
+async function unfavoriteDrink(event){
+    let drink = event.target.getAttribute("data-drinkID");
+
+    const result = await axios({
+        method: 'DELETE',
+        url: `https://warm-oasis-53340.herokuapp.com/favorite/${drink}`,
+        withCredentials: true
+    });
+    console.log("unfavorited drinkid " + drink);
+}
 
 async function handleFavorite(event){
     //data-drinkName
@@ -155,6 +167,7 @@ async function getFavorites(){
 
 
     let drinkArray = [];
+    let idArray = [];
     for(let index in favoritesIndex){
         let drink = await axios({
             method: 'GET',
@@ -162,6 +175,7 @@ async function getFavorites(){
             withCredentials: true,
         });
         drinkArray.push(drink.data.favorites);
+        idArray.push(drink.data.id);
     }
 
     for(let i in drinkArray){
@@ -169,7 +183,7 @@ async function getFavorites(){
         $('#dependsOnSearch').append(`
                                     <div class="box">
                                         <h2>${drinkArray[i]}</h2>
-                                        <button type = "button" id = "unFavButton" class = "button is-rounded is-small" data-drink=${drinkArray[i]}>Unfavorite</button>
+                                        <button type = "button" id = "unFavButton" class = "button is-rounded is-small" data-drinkID=${idArray[i]}>Unfavorite</button>
                                     </div>`);
     }
 }
