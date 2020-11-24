@@ -112,35 +112,64 @@ export function switchToPopular(){
 function switchToFavorite(){
     $('#dependsOnSearch').empty();
     $('.content h1').html("Favorites");
-    updateFavorite();
+    getFavorites();
 }
-async function updateFavorite(){
+// async function updateFavorite(){
+//     const result = await axios({
+//         method: 'GET',
+//         url: 'https://warm-oasis-53340.herokuapp.com/favorite',
+//         withCredentials: true,
+//     });
+//     //console.log("the result var inside updateFavorite");
+//     //console.log(result);
+//     let favoritesIndex = result.data;
+//     let drinkArray = [];
+
+//     for(let index in favoritesIndex){
+//         let name = await axios({
+//             method: "GET",
+//             url: `https://warm-oasis-53340.herokuapp.com/favorite/${favoritesIndex[index]}`,
+//             withCredentials: true,
+//         });
+//         console.log("name: ");
+//         console.log(name);
+//         drinkArray.push(name.favorites);
+//     }
+//     console.log(drinkArray + " is drink array");
+//     for(let index in drinkArray){
+//         $('#dependsOnSearch').append(`
+//                                     <div class="box">
+//                                         <h2>${drinkArray[index]}</h2>
+//                                         <button type = "button" id = "unFavButton" class = "button is-rounded is-small" data-drink=${drinkArray[index]}>Unfavorite</button>
+//                                     </div>`);
+//     }
+// }
+
+async function getFavorites(){
     const result = await axios({
         method: 'GET',
         url: 'https://warm-oasis-53340.herokuapp.com/favorite',
         withCredentials: true,
     });
-    //console.log("the result var inside updateFavorite");
-    //console.log(result);
     let favoritesIndex = result.data;
-    let drinkArray = [];
 
+
+    let drinkArray = [];
     for(let index in favoritesIndex){
-        let name = await axios({
-            method: "GET",
-            url: `https://warm-oasis-53340.herokuapp.com/favorite/${favoritesIndex[index]}`,
+        let drink = await axios({
+            method: 'GET',
+            url: `https://warm-oasis-53340.herokuapp.com/${favoritesIndex[index]}`,
             withCredentials: true,
         });
-        console.log("name: ");
-        console.log(name);
-        drinkArray.push(name.favorites);
+        drinkArray.push(drink.data.favorites);
     }
-    console.log(drinkArray + " is drink array");
-    for(let index in drinkArray){
+
+    for(let i in drinkArray){
+        //We may want to actually pass the drink id because that might be easier to search for. Idk yet
         $('#dependsOnSearch').append(`
                                     <div class="box">
-                                        <h2>${drinkArray[index]}</h2>
-                                        <button type = "button" id = "unFavButton" class = "button is-rounded is-small" data-drink=${drinkArray[index]}>Unfavorite</button>
+                                        <h2>${drinkArray[i]}</h2>
+                                        <button type = "button" id = "unFavButton" class = "button is-rounded is-small" data-drink=${drinkArray[i]}>Unfavorite</button>
                                     </div>`);
     }
 }
