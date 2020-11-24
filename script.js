@@ -36,7 +36,6 @@ $(document).on("click", ".unFavButton", unfavoriteDrink);
 })
 
 async function unfavoriteDrink(event){
-    console.log("unfav");
     let drink = event.target.getAttribute("data-drinkID");
 
     const result = await axios({
@@ -44,7 +43,7 @@ async function unfavoriteDrink(event){
         url: `https://warm-oasis-53340.herokuapp.com/favorite/${drink}`,
         withCredentials: true
     });
-    console.log("unfavorited drinkid " + drink);
+    switchToFavorite();
 }
 
 async function handleFavorite(event){
@@ -60,7 +59,6 @@ async function handleFavorite(event){
                 'drinkName': `${drinkName}`
             }
         });
-    console.log(result);
     return;
     }
     catch(e){
@@ -129,36 +127,6 @@ function switchToFavorite(){
     $('.content h1').html("Favorites");
     getFavorites();
 }
-// async function updateFavorite(){
-//     const result = await axios({
-//         method: 'GET',
-//         url: 'https://warm-oasis-53340.herokuapp.com/favorite',
-//         withCredentials: true,
-//     });
-//     //console.log("the result var inside updateFavorite");
-//     //console.log(result);
-//     let favoritesIndex = result.data;
-//     let drinkArray = [];
-
-//     for(let index in favoritesIndex){
-//         let name = await axios({
-//             method: "GET",
-//             url: `https://warm-oasis-53340.herokuapp.com/favorite/${favoritesIndex[index]}`,
-//             withCredentials: true,
-//         });
-//         console.log("name: ");
-//         console.log(name);
-//         drinkArray.push(name.favorites);
-//     }
-//     console.log(drinkArray + " is drink array");
-//     for(let index in drinkArray){
-//         $('#dependsOnSearch').append(`
-//                                     <div class="box">
-//                                         <h2>${drinkArray[index]}</h2>
-//                                         <button type = "button" id = "unFavButton" class = "button is-rounded is-small" data-drink=${drinkArray[index]}>Unfavorite</button>
-//                                     </div>`);
-//     }
-// }
 
 async function getFavorites(){
     const result = await axios({
@@ -235,7 +203,6 @@ export async function handleVod(){
     })
 
     for(let i =0; i < res.data.drinks.length; i++){
-        console.log(res.data.drinks[i].strDrink)
         let j = Math.floor(i/10)
         if( i % 10 == 0){
             $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
@@ -252,7 +219,6 @@ export async function handleGin2(){
     })
 
     for(let i =0; i < res.data.drinks.length; i++){
-        console.log(res.data.drinks[i].strDrink)
         let j = Math.floor(i/10)
         if( i % 10 == 0){
             $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
@@ -269,7 +235,6 @@ export async function handleTeq(){
     })
 
     for(let i =0; i < res.data.drinks.length; i++){
-        console.log(res.data.drinks[i].strDrink)
         let j = Math.floor(i/10)
         if( i % 10 == 0){
             $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
@@ -286,7 +251,6 @@ export async function handleRum1(){
     })
 
     for(let i =0; i < res.data.drinks.length; i++){
-        console.log(res.data.drinks[i].strDrink)
         let j = Math.floor(i/10)
         if( i % 10 == 0){
             $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
@@ -303,7 +267,6 @@ export async function handleBran(){
     })
 
     for(let i =0; i < res.data.drinks.length; i++){
-        console.log(res.data.drinks[i].strDrink)
         let j = Math.floor(i/10)
         if( i % 10 == 0){
             $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
@@ -320,7 +283,6 @@ export async function handleWhis(){
     })
 
     for(let i =0; i < res.data.drinks.length; i++){
-        console.log(res.data.drinks[i].strDrink)
         let j = Math.floor(i/10)
         if( i % 10 == 0){
             $('#ingredientTable').append(`<tr id = ${"table"+j}></tr>`)
