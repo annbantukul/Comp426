@@ -128,7 +128,7 @@ async function updateFavorite(){
     for(let index in favoritesIndex){
         let name = await axios({
             method: "PUT",
-            url: `https://warm-oasis-53340.herokuapp.com/favorite/${favoritesIndex[index]}`,
+            url: `https://warm-oasis-53340.herokuapp.com/favorite/6`,
             withCredentials: true,
             params: {
                 'id': favoritesIndex[index],
