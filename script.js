@@ -41,7 +41,7 @@ async function handleFavorite(event){
             url: 'https://warm-oasis-53340.herokuapp.com/favorite',
             withCredentials: true,
             data: {
-                'drinkName': `${drinkName}`
+                'favorites': `${drinkName}`
             }
         });
     console.log(result);
