@@ -34,3 +34,9 @@ h99{
     width: 300 px;
     border-color: transparent;
 }
+
+.favDrinkButtonDrink{
+    border: 0;
+    background-color: Transparent;
+    font-size: 30px
+}
