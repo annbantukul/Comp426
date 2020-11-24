@@ -21,7 +21,9 @@ $('#popularButton').on("click", switchToPopular)
 $('#ingredientButton').on("click", switchToIngredient)
 $('#nameButton').on("click", switchToName)
 $('#favoriteButton').on("click", switchToFavorite)
-$('.unFavButton').on("click", unfavoriteDrink);
+//$('.unFavButton').on("click", unfavoriteDrink);
+$(document).on("click", ".unFavButton", unfavoriteDrink);
+
  postPopular()
  postVodka()
  postGin()
