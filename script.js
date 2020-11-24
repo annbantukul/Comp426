@@ -21,7 +21,7 @@ $('#popularButton').on("click", switchToPopular)
 $('#ingredientButton').on("click", switchToIngredient)
 $('#nameButton').on("click", switchToName)
 $('#favoriteButton').on("click", switchToFavorite)
-$('#unFavButton').on("click", unfavoriteDrink);
+$('.unFavButton').on("click", unfavoriteDrink);
  postPopular()
  postVodka()
  postGin()
@@ -184,7 +184,7 @@ async function getFavorites(){
         $('#dependsOnSearch').append(`
                                     <div class="box">
                                         <h2>${drinkArray[i]}</h2>
-                                        <button type = "button" id = "unFavButton" class = "button is-rounded is-small" data-drinkID=${idArray[i]}>Unfavorite</button>
+                                        <button type = "button" class = "unFavButton button is-rounded is-small" data-drinkID=${idArray[i]}>Unfavorite</button>
                                     </div>`);
     }
 }
