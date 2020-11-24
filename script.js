@@ -158,7 +158,7 @@ async function getFavorites(){
     for(let index in favoritesIndex){
         let drink = await axios({
             method: 'GET',
-            url: `https://warm-oasis-53340.herokuapp.com/${favoritesIndex[index]}`,
+            url: `https://warm-oasis-53340.herokuapp.com/favorite/${favoritesIndex[index]}`,
             withCredentials: true,
         });
         drinkArray.push(drink.data.favorites);
