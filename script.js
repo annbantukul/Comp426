@@ -453,7 +453,7 @@ export async function addDrinkCard(drink){
         $('#ingList').append(`<li>${ingredients[j+i]}  ${ingredients[i]}</li>`)
     }
 
-    $('#ingList').append(`<br><button type = "button" id = "favButton" class = "button is-rounded is-small">Add to Favorites</button>`)
+    $('#ingList').append(`<br><button type = "button" id = "favButton" class = "button is-rounded is-small" data-drinkName="${drink}">Add to Favorites</button>`)
 
 }
 
