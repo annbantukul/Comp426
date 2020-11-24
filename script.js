@@ -33,6 +33,7 @@ $('#favoriteButton').on("click", switchToFavorite)
 })
 
 async function handleFavorite(event){
+    //data-drinkName
     let drinkName = event.target.getAttribute("data-drinkName");
     
     try{        
@@ -124,14 +125,14 @@ async function updateFavorite(){
     let favoritesIndex = result.data;
     let drinkArray = [];
 
-    //console.log("drink array is " + drinkArray);
     for(let index in favoritesIndex){
         let name = await axios({
             method: "GET",
             url: `https://warm-oasis-53340.herokuapp.com/favorite/${favoritesIndex[index]}`,
             withCredentials: true,
         });
-        //console.log(name)
+        console.log("name: ");
+        console.log(name);
         drinkArray.push(name.favorites);
     }
     console.log(drinkArray + " is drink array");
