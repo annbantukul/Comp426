@@ -127,7 +127,7 @@ async function updateFavorite(){
     console.log("drink array is " + drinkArray);
     for(let index in favoritesIndex){
         let name = await axios({
-            method: "PUT",
+            method: "GET",
             url: `https://warm-oasis-53340.herokuapp.com/favorite/6`,
             withCredentials: true,
             params: {
